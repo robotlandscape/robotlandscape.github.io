@@ -1,3 +1,13 @@
 main {
   max-width: 65ch;
+  margin-inline: auto;
+}
+
+footer {
+  margin-inline: auto;
+  max-width: 65ch;
+}
+
+img {
+  max-width: 100%;
 }
