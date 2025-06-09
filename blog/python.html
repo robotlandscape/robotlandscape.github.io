@@ -52,9 +52,11 @@
 <hr />
 
 <p>Appendix: I went down a little bit of a rabbit hole to find out exactly how much memory Python uses, and it turns out to be a little bit difficult to measure at the bit level. The <em>Resident Set Size</em> was the best order-of-magnitude measurement I could find, which represents the portion of memory held in a computer&rsquo;s RAM (as opposed to swap or something else). The memory usage for various programs were measured:
-    - Python: 3981 kB
-    - Vim: 2799 kB
-    - Ed: 507 kB
+<ul>
+  <li>Python: 3981 kB</li>
+  <li>Vim: 2799 kB</li>
+  <li>Ed: 507 kB</li>
+</ul>
 These values were aquired by running the program, finding its PID with ps, then <code>cat /proc/PID/statm</code>. These are the second numbers in the output.</p>
 
 <p>Additionally, DOOM (1993)&rsquo;s system requirements ask for 8 MB of RAM, so if you can run DOOM on something, you can definitely run Python on it.</p>
