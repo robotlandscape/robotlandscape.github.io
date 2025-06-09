@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>Do it in Python First</title>
+  <author>Toast</author>
+</head>
+<body>
+
+<h1>2025-06-09: Do it in Python first</h1>
+
+<h3>&ldquo;No thanks, I already have a programming language&rdquo;</h3>
+
+<p>Whatever program you&rsquo;re writing, it doesn&rsquo;t matter what it is, just do it in <a href="https://www.python.org/">Python</a> first.</p>
+
+<p>Python is&hellip; okay. It&rsquo;s not as fast as C or Rust, it&rsquo;s not as correct as Haskell, it&rsquo;s not a perfect language. I&rsquo;ve been writing Python code, both formally and informally, for more than a decade. There are many things about it which I don&rsquo;t love, but it always gets the job done.</p>
+
+<p>It&rsquo;s easy. It&rsquo;s readable even to non-technical folks. It&rsquo;s readable to an English teacher. My first exposure to it was in seventh grade, when I was 12 years old, and I&rsquo;ve been using it to write useful code ever since.</p>
+
+<p>Python is a real, general-purpose programming language. It&rsquo;s used by rocket scientists to launch satellites, then by a different set of scientists to analyze data taken by those satellites. It is used to train the <a href="https://github.com/meta-llama/llama-models">LLAMA LLM</a>.</p>
+
+<p>Python is extremely accessible. I learned to use it with <a href="https://repl.it">repl.it</a>, but now in a pinch I can quickly spin up a Google Colab, which has all the main packages built in already without the need for an import. (If you need to import a new package, pip is built right in. Just run <code>pip install numpy</code> as if it were normal Python code and it executes beautifully.) It&rsquo;s built into MacOS, likely already installed if you use Linux, and running <code>python</code> in a Windows terminal lets you install it in a single click. This accessibility is important for open source because it lets more people instantly understand your code, and for non-open source to allow other folks in your organization to understand your code without navigating unfamiliar syntax.</p>
+
+<p>The language lets you do hard things easily. XKCD&rsquo;s Joke about Python applies.</p>
+
+<p><img src="https://imgs.xkcd.com/comics/Python.png" alt="import antigravity" /></p>
+
+<p>Need to make a GUI? <code>import tkinter</code>. A secure password manager? <code>import secrets</code>. Sending an email? <code>import email</code>. A browser? <code>import html</code>. This is all <em>just the standard library</em>, not even touching the wealth of well-optimized, well-documented 3rd party libraries such as numpy, sympy, matplotlib, pygame, astropy, plasmapy, scipy, pandas, and more. Many times, these libraries are written in a faster language than Python itself: Numpy, for example, <a href="https://numpy.org/doc/stable/user/c-info.how-to-extend.html">uses C/C++/Fortran</a> to speed up bottleneck operations.</p>
+
+<h2>But Python isn&rsquo;t as ______ as _______!</h2>
+
+<p>There are few situations which I would recommend against Python. These are valid, because Python isn&rsquo;t perfect. The first draft of any code should be in Python, unless&hellip;</p>
+
+<ul>
+<li><strong>You&rsquo;re making a website</strong>: Browsers can&rsquo;t execute Python, they execute Javascript. I&rsquo;ve heard good things about Django, but I&rsquo;ve never tried it. <a href="https://motherfuckingwebsite.com/">Just know that no one cares about fancy javascript-heavy websites.</a></li>
+<li><strong>You are in a <em>heavily</em> resource-constrained environment</strong>: If you&rsquo;re not sure your computer can run DOOM, then try Rust. Otherwise, Python will do! (See appendix for some memory experiments)</li>
+<li><strong>You found a bottleneck in your Python code</strong>: You can&rsquo;t really analyze petabytes of data in Python. Offload that work to whatever hand-rolled C or Rust code you&rsquo;d like.</li>
+<li><strong>You need a backwards compatibility guarantee</strong>: Although Python is unlikely to create any fundamental breaking changes like the transition from 2 to 3, it&rsquo;s still a living language, and can change if the benefit to cost ratio is strong enough. Despite this, in general the language is <a href="https://docs.Python.org/3/faq/general.html#id22">very stable</a>.</li>
+</ul>
+
+
+<h3>Myths about Python</h3>
+
+<ul>
+<li><strong>It&rsquo;s slow</strong>: It&rsquo;s not slow. It&rsquo;s not the fastest language to benchmark with, and it will never win a benchmark against an identical C program. That doesn&rsquo;t make it slow. With multi-threading, asynchronous operations, and C interoperability where you need it, the time you save writing code will win over time actually running the program. If your Python code is slow, it might not be because of Python.</li>
+<li><strong>You&rsquo;re forced to do object-orientation</strong>: You aren&rsquo;t forced into it. Use it where it makes sense, or ignore OO features.</li>
+</ul>
+
+
+<h1>Conclusion</h1>
+
+<p>I have tried a lot of different programming languages to find &ldquo;the one&rdquo; which fitted me best. Python is not a perfect fit for me. I would love it if I could write Rust with the same efficiency as I can with Python, because many of the decisions made by the Rust language have resulted in that nearly perfect language. C, Go, Java, and Javascript are decently fast and well-supported nowadays, too. I&rsquo;ve needed to write MATLAB and IDL code for legacy purposes, for which I needed to learn them. But Python is a language easy enough to learn, simple enough to memorize, fast enough for everything with few exceptions, and expressive enough to do everything. Stop trying to find a programming language, just use Python!</p>
+
+<hr />
+
+<p>Appendix: I went down a little bit of a rabbit hole to find out exactly how much memory Python uses, and it turns out to be a little bit difficult to measure at the bit level. The <em>Resident Set Size</em> was the best order-of-magnitude measurement I could find, which represents the portion of memory held in a computer&rsquo;s RAM (as opposed to swap or something else). The memory usage for various programs were measured:
+    - Python: 3981 kB
+    - Vim: 2799 kB
+    - Ed: 507 kB
+These values were aquired by running the program, finding its PID with ps, then <code>cat /proc/PID/statm</code>. These are the second numbers in the output.</p>
+
+<p>Additionally, DOOM (1993)&rsquo;s system requirements ask for 8 MB of RAM, so if you can run DOOM on something, you can definitely run Python on it.</p>
+
+</body>
